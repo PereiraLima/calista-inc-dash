@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">  
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Data Dashboard</title>
+  </head>
+  <body>
+    <!-- TODO: add a navigation bar to the top of the web page
+        The navigation bar should include 
+        -   a link with a navbar-brand class. The link should say World Bank Dashboard and the href attribute should be equal to "#", which means that if somebody clicks on the link, the browser remains on the same page
+        -   a link to the Udacity data science nanodegree website: https://www.udacity.com/course/data-scientist-nanodegree--nd025
+        -   a link to the World Bank data website: https://data.worldbank.org/
+        -   any other links you'd like to add
+        - align the Udacity and World Bank links to the right side of the navbar (hint: use ml-auto)
+    HINT: If you get stuck, re-watch the previous video and/or use an example from the documentation on the Bootstrap website: https://getbootstrap.com/docs/4.0/components/navbar/#nav-->
+    
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <a class="navbar-brand" href="#">World Bank Dashboard</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="https://www.udacity.com/course/data-scientist-nanodegree--nd025"> U-dacity </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://data.worldbank.org/">World Data Bank</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+  <div class = "row ml-1 mt-2" >
+
+    <div	class = "col-1" > 
+      <a  href="https://github.com/PereiraLima" > 
+        <img src="/static/img/githublogo.png" class="img-fluid" alt="github logo">
+      </a>
+
+       <a  href="https://www.linkedin.com/in/axel-lima-63014085/">
+       <img src="/static/img/linkedinlogo.png" class="mt-3 img-fluid" alt="linked logo">
+       </a>
+
+    </div>
+    
+   <!-- <div	class = "col-1" >
+
+    </div> -->
+    
+    
+    <div	class = "col-10" > 
+      <h2> World Bank Data Dashboard</h2>
+      <h4 class = text-muted> Land Use Visualisation </h4>
+      
+      <div class = "container"> 
+      
+        <div class = "row mb-3 mt-3"> 
+         <div class = "col-4"> 
+            <div id = {{ids[0]}}></div>
+         </div>
+         
+          <div class = "col-4"> 
+            <div id = {{ids[1]}}></div>
+          </div>
+ 	      
+ 	      <div class = "col-4"> 
+            <div id = {{ids[2]}}></div>
+          </div>
+        </div>
+        
+        <div class = "row"> 
+          <div class = "col-6"> 
+            <div id = {{ids[3]}}></div>
+          </div>
+          
+          <div class = "col-6"> 
+            <div id = {{ids[4]}}></div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type = "text/javascript">
+
+     // plots the figure  with id
+     // id must match the div id above in the html -->
+
+     var figures = {{figuresJSON | safe }};
+     var ids = {{ids | safe}};
+     for (var i in figures) {
+        Plotly.plot(ids[i],
+        figures[i].data,
+        figures[i].layout || {});
+     }
+  </script>
+
+  </body>
+</html>
